@@ -5,18 +5,27 @@
     <script src="https://unpkg.com/vue"></script>
 </head>
 <body>
-  <h1>Vue.js</h1>
-  <div id="app">
+    <h1>Vue.js</h1>
+    <div id="app">
     {{ message }}
-  </div>
-  <hr>
+    </div>
+    <hr>
+    <button onclick="doAction();">
+      click
+    </button>
+
     <script>
+    var data = {
+        message: 'Hello Vue!'
+    };
     var app = new Vue({
         el: '#app',
-        data: {
-            message: 'Hello Vue!'
-        }
+        data: data
     })
+
+    function doAction() {
+        data.message = "you Clicked !!!!";
+    }
     </script>
 </body>
 </html>
