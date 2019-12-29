@@ -7,16 +7,31 @@
 <body>
     <h1>Vue.js</h1>
     <div id="app">
-        <p v-html="messages"></p>
+        <ol v-html="messages"></ol>
     </div>
+    <hr>
+    <input type="text" onInput="doInput(event);">
+    <button onclick="doAction();">
+    click
+    </button>
+
     <script>
     var data = {
-        messages: '<h2 style="color:red;">vue.js sample message.</h2>',
-    };
+        messages: '<li>Hello Vue!</li>'
+    }
     var app = new Vue({
         el: '#app',
         data: data
     })
+
+    function doInput(event) {
+        data.message = event.target.value;
+    }
+    function doAction() {
+        <!-- data.messages += '<li>' + data.message + '</li>' -->
+        data.messages = '<li>' + data.message + '</li>' + data.messages
+
+    }
     </script>
 </body>
 </html>
