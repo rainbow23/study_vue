@@ -7,43 +7,16 @@
 <body>
     <h1>Vue.js</h1>
     <div id="app">
-        {{ message }}
+        <p v-html="messages"></p>
     </div>
-    <hr>
-    <button onclick="doAction();">
-        click
-    </button>
     <script>
     var data = {
-        message: 'Hello Vue!',
-        items: ['One', 'Two', 'Three', 'Four', 'Five']
+        messages: '<h2 style="color:red;">vue.js sample message.</h2>',
     };
-
     var app = new Vue({
         el: '#app',
-        data: data,
-        render: (element)=> {
-            var p = element("p",
-                {style:'font-size:20pt;'},
-                data.message
-            );
-            var li = data.items.map(item=> element('li', item));
-            var ol = element("ol", li);
-            var div = element("div", [p, ol]);
-            return div;
-        }
+        data: data
     })
-
-    function doAction() {
-        var newdata = [
-            'いち', 'に', 'さん', 'よん', 'ご'
-        ]
-        data.message = "you Clicked!!!";
-        data.items[0] = 'ゼロ';
-        for (n in data.items) {
-            data.items[n] = newdata[n];
-        }
-    }
     </script>
 </body>
 </html>
