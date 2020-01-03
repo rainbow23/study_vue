@@ -5,24 +5,48 @@
     <script src="https://unpkg.com/vue"></script>
 </head>
 <body>
+    <style>
+    .red {
+        font-size:20pt;
+        font-weight:bold;
+        font-style:normal;
+        color:red;
+    }
+    .blue {
+        font-size:21pt;
+        font-weight:plain;
+        font-style:italic;
+        color:blue;
+    }
+    </style>
     <h1>Vue.js</h1>
     <div id="app">
-        <p v-bind:style="style">{{ message }}</p>
+        <p v-bind:class="classes">
+        {{ message }}
+        </p>
     </div>
     <hr>
-    <input type="number" onChange="doChange(event);" value="20">
+    <button onclick="doAction();">
+    click
+    </button>
+
     <script>
+    var classObj = {
+        red: true,
+        blue: false
+    }
     var data = {
         message: 'Hello Vue!',
-        style: 'font-size:20pt; color:red;'
-    }
+        classes: classObj
+    };
     var app = new Vue({
         el: '#app',
         data: data
     })
 
-    function doChange(event) {
-        data.style = 'font-size:' + event.target.value + 'pt; color:red';
+    function doAction() {
+        classObj.red  = !classObj.red;
+        classObj.blue = !classObj.blue;
     }
     </script>
 </body>
