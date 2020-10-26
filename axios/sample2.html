@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>vueを使ってaxiosを学ぶ</title>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="user in users">{{ user.name }}</li>
+    </ul>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        users: []
+      },
+      mounted :function(){
+        axios.get('https://jsonplaceholder.typicode.com/users')
+              .then(response => this.users = response.data)
+              .catch(response => console.log(response))
+      }
+    })
+  </script>
+</body>
+</html>
+
+
+
+
+
