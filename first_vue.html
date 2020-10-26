@@ -1,0 +1,47 @@
+<script src="https://unpkg.com/vue@2.5.17"></script>
+<div id="app">
+    <p>
+        {{ message }}
+    </p>
+    <p>
+        {{ items[0].name }}
+    </p>
+    <button @click = "greet">
+        あいさつする
+    </button>
+</div>
+<script>
+    // ロードされ、Vueがグローバル変数として定義されているか確認
+    console.assert(typeof Vue !== 'undefined');
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'こんにちは！',
+            items: items
+        },
+        greet: function () {
+            alert ("Hello," + this.message) ;
+        }
+    });
+
+var items = [
+    {
+        name: '鉛筆',
+        price: 300,
+        quantity: 0
+    },
+    {
+        name: 'ノート',
+        price: 400,
+        quantity: 0
+    },
+    {
+        name: '消しゴム',
+        price: 500,
+        quantity: 0
+    }
+]
+
+    window.vm = vm
+</script>

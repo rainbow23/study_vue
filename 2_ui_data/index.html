@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>はじめてのVue.js</title>
+    <script src="https://unpkg.com/vue@2.5.17"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{ items[0].name }}: {{ items[0].price }} x {{ items[0].quantity }} </p>
+        <button id="b-button" v-bind:title="loggedInButton">購入</button>
+    </div>
+
+    <script>
+        var items = [
+            {
+                name: '鉛筆',
+                price: 300,
+                quantity: 0
+            },
+            {
+                name: 'ノート',
+                price: 400,
+                quantity: 0
+            },
+            {
+                name: '消しゴム',
+                price: 500,
+                quantity: 0
+            }
+        ]
+
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                items: items,
+                loggedInButton: 'ログイン済のため購入できます'
+            }
+        });
+
+        new Vue({
+            el: '#b-button',
+            data: {
+                loggedInButton: 'ログイン済のため購入できます'
+            }
+        });
+
+        console.log(vm.items)
+
+        vm.$watch(function () {
+            return this.items[0].quantity
+        }, function (quantity) {
+            console.log(quantity)
+        })
+        vm.items[1].quantity = 1
+
+    </script>
+</body>
+</html>
